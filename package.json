@@ -4,7 +4,7 @@
   "main": "electron/main.js",
   "author": "Nikhil",
   "description": "this is a markdown app for taking notes and store data in index db",
-  "homepage": "https://github.com/Nikhil012N/markdown-editor.git",
+  "homepage": "https://nikhil012n.github.io/markdown-editor",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
     "build": "vite build && npm run electron:build",
