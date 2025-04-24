@@ -4,11 +4,15 @@
   "main": "electron/main.js",
   "author": "Nikhil",
   "description": "this is a markdown app for taking notes and store data in index db",
+  "homepage": "https://github.com/Nikhil012N/markdown-editor.git",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
     "build": "vite build && npm run electron:build",
     "preview": "vite preview",
-    "electron:build": "electron-builder"
+    "vite:build": "vite build",
+    "electron:build": "electron-builder",
+    "predeploy": "npm run vite:build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@editorjs/editorjs": "^2.30.8",
@@ -29,6 +33,7 @@
     "cross-env": "^7.0.3",
     "electron": "^25.3.2",
     "electron-builder": "^24.4.0",
+    "gh-pages": "^6.3.0",
     "vite": "^4.4.5",
     "vite-plugin-electron": "^0.11.2",
     "vite-plugin-electron-renderer": "^0.13.1",
