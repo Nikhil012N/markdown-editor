@@ -3,7 +3,7 @@
 Markdown Editor - By Nikhil
 ===========================
 
-A simple, fast, and secure Markdown Editor application built with React, Vite, and Material UI. This project allows users to create, edit, and delete markdown notes efficiently. It features a clean user interface, real-time previews for markdown content, and follows best practices for security and performance.
+A simple, fast, and secure Markdown Editor application built with React, Vite, Material UI, and Electron. This project allows users to create, edit, and delete markdown notes efficiently. It features a clean user interface, real-time previews for markdown content, and follows best practices for security and performance.
 
 Features
 --------
@@ -14,6 +14,8 @@ Features
 * **Real-time Preview**: See live markdown rendering while you type.
 * **Responsive Design**: Works smoothly on both desktop and mobile devices.
 * **Security**: The app is built with secure web development practices, such as Content Security Policy (CSP).
+* **Electron Support**: Build a desktop app for Windows, macOS, and Linux.
+* **Persistent Storage with IndexedDB**: Saves your notes locally for offline use, leveraging IndexedDB for storing data.
 
 Tech Stack
 ----------
@@ -23,6 +25,8 @@ Tech Stack
 * **Tools**: Vite for fast build and development experience
 * **UI Components**: Material-UI for modern, customizable UI components
 * **Code Styling**: Emotion for styled components
+* **Electron**: Framework for building cross-platform desktop applications
+* **Storage**: IndexedDB for persistent, local storage of markdown notes
 
 Installation
 ------------
@@ -33,6 +37,7 @@ Make sure you have the following installed:
 
 * [Node.js](https://nodejs.org/) (>= 16.x)
 * [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+* [Electron](https://www.electronjs.org/) (Optional for building desktop version)
 
 ### Steps
 
@@ -63,6 +68,14 @@ Make sure you have the following installed:
     
     Open [http://localhost:5173](http://localhost:5173) in your browser to see the application.
     
+4.  **Build for Desktop (Electron):**
+    
+    To package the app as a desktop application, run the following command:
+    
+        npm run electron:build
+    
+    Ensure you have Electron and its dependencies properly set up for this step.
+    
 
 Usage
 -----
@@ -72,19 +85,25 @@ Usage
 * **Searching Notes**: Use the search bar at the top to filter and find notes by title.
 * **Deleting a Note**: Click the delete icon next to a note, confirm, and it will be removed from the list.
 * **Viewing Note Details**: Click a note to view more details such as title and last edited timestamp.
+* **Offline Usage**: The app stores your notes locally in IndexedDB, allowing you to access your notes even when offline.
 
 Code Structure
 --------------
 
     /markdown-editor
+      ├── /electron             # Electron-specific files for desktop packaging
+              ├── main.js          # Main Electron process
+              ├── preload.js # Electron build configuration
       ├── /src
           ├── /components
-              ├── NoteList.js       # List of notes with add, delete, and search functionality
-              ├── ErrorBoundary.js  # Error boundary for handling runtime errors
+              ├── Notelist.jsx       # List of notes with add, delete, and 
+              search functionality
+              ├── NoteEditor.jsx       
+              ├── ErrorBoundary.jsx  # Error boundary for handling runtime errors
           ├── /styles
               ├── global.css        # Global styles and themes
-          ├── App.js                # Main App component
-          ├── index.js              # Entry point for the app
+          ├── App.jsx                # Main App component
+          ├── main.jsx              # Entry point for the app
       ├── /public
           ├── /index.html           # The main HTML template
       ├── package.json              # Project metadata and dependencies
@@ -96,6 +115,7 @@ Code Structure
 * **App.js**: The main component that manages the state and renders the core layout.
 * **NoteList.js**: The sidebar containing the list of notes, their search, and delete functionalities.
 * **ErrorBoundary.js**: A component to catch and display errors in a clean manner.
+* **Electron Files**: Contains Electron-specific files for building and packaging the desktop app.
 
 Security Features
 -----------------
