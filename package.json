@@ -1,0 +1,58 @@
+{
+  "name": "markdown-note-editor",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "author": "Nikhil",
+  "description": "this is a markdown app for taking notes and store data in index db",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "build": "vite build && npm run electron:build",
+    "preview": "vite preview",
+    "electron:build": "electron-builder"
+  },
+  "dependencies": {
+    "@editorjs/editorjs": "^2.30.8",
+    "@editorjs/header": "^2.8.8",
+    "@editorjs/list": "^2.0.6",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.4",
+    "concurrently": "^8.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^25.3.2",
+    "electron-builder": "^24.4.0",
+    "vite": "^4.4.5",
+    "vite-plugin-electron": "^0.11.2",
+    "vite-plugin-electron-renderer": "^0.13.1",
+    "vitest": "^0.32.2",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.nikhil.markdownnoteeditor",
+    "productName": "Markdown Note Editor",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
